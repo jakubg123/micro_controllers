@@ -1,0 +1,7 @@
+System powinien implementować prostą grę polegającą na zgadywaniu liczb.
+System losowo wybiera liczbę naturalną z zakresu od 1 do 100.
+Użytkownik ustawia własną wartość za pomocą przycisku "+" lub "-". Numer ustawiony przez użytkownika drukowany jest na ekranie terminala.
+Użytkownik potwierdza wybór przyciskiem "ENTER".
+Jeśli numer wprowadzony przez użytkownika zgadza się z numerem wybranym na początku (krok 2), wówczas zapala się zielona dioda LED. Po naciśnięciu przycisku "ENTER" wszystkie diody gasną i wykonanie przechodzi do kroku 2.
+Jeżeli wprowadzona przez użytkownika liczba jest mniejsza niż liczba wybrana na początku (krok 2), wówczas zapala się żółta dioda LED (świeci do momentu naciśnięcia dowolnego przycisku). Przejdź do kroku 3.
+Jeżeli wprowadzona przez użytkownika liczba jest większa niż liczba wybrana na początku (krok 2), wówczas zapala się czerwona dioda LED (świeci do momentu naciśnięcia dowolnego przycisku). Przejdź do kroku 3.
