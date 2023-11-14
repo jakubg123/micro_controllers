@@ -7,8 +7,12 @@
 #define minusButton 6 
 #define enterButton 7
 
-int guess_number;
-int initial_value = 50; 
+int guessNumber;
+int initialValue = 50;
+
+bool plusButtonPressed;
+bool minusButtonPressed;
+bool enterButtonPressed;
 
 void setup() {
 
@@ -21,35 +25,39 @@ void setup() {
   pinMode(enterButton, INPUT_PULLUP);
 
   randomSeed(analogRead(0)); 
-  guess_number = random(1, 101);
+  guessNumber = random(1, 101);
 
   Serial.begin(9600);
-  Serial.println("Guess a number.");
+  Serial.println("Guess a number. 50 is your starting point");
 }
 
 void loop() {
-  bool plusButtonPressed = digitalRead(plusButton) == LOW;
-  bool minusButtonPressed = digitalRead(minusButton) == LOW;
-  bool enterButtonPressed = digitalRead(enterButton) == LOW;
 
-  Serial.print("Your guess: ");
-  Serial.println(initial_value);
 
-  if (plusButtonPressed) {
-    initial_value++;
-    delay(200);
-  } else if (minusButtonPressed) {
-    initial_value--;
-    delay(200);
+  if (digitalRead(plusButton) == LOW) {
+    delay(20);
+    initialValue++;
+    while(digitalRead(plusButton) == LOW);
+    delay(20);
+    Serial.print("Your guess: ");
+  	Serial.println(initialValue);
+    
+  } else if (digitalRead(minusButton) == LOW) {
+    delay(20);
+    initialValue--;
+    while(digitalRead(minusButton) == LOW);
+    delay(20);
+    Serial.print("Your guess: ");
+  	Serial.println(initialValue);
   }
 
-  if (enterButtonPressed) {
-    if (initial_value == guess_number) {
+  if (digitalRead(enterButton) == LOW) {
+    if (initialValue == guessNumber) {
       digitalWrite(GREEN_PIN, HIGH);
       delay(1000);
       digitalWrite(GREEN_PIN, LOW);
-      guess_number = random(1, 101);
-    } else if (initial_value < guess_number) {
+      guessNumber = random(1, 101);
+    } else if (initialValue < guessNumber) {
       digitalWrite(YELLOW_PIN, HIGH);
       delay(1000);
       digitalWrite(YELLOW_PIN, LOW);
